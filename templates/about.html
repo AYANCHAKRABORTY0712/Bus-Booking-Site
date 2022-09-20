@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About
+{% endblock title %}
+
+{% block body %}
+<link rel="stylesheet" href="/static/css/style.css" />
+<style>
+body {
+/*background: url(https://d5a9s4m4.stackpathcdn.com/wp-content/uploads/2016/03/11638956-seamless-flower-paisley-design-background-Stock-Vector-pattern-350x350.jpg);*/
+font-family: Arial, Helvetica, sans-serif;
+margin: 0;
+}
+html {
+box-sizing: border-box;
+}
+*, *:before, *:after {
+box-sizing: inherit;
+}
+.bg-dark {
+    background-color: #082442!important;
+}
+.column {
+float: left;
+width: 33.3%;
+margin-bottom: 16px;
+padding: 0 8px;
+}
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+margin: 8px;
+}
+.about-section {
+padding: 50px;
+text-align: center;
+background-color: #f0e8e2;
+color: white;
+}
+.container {
+padding: 0 16px;
+}
+.container::after, .row::after {
+content: "";
+clear: both;
+display: table;
+}
+.title {
+color: black;
+}
+.button {
+border: none;
+outline: 0;
+display: inline-block;
+padding: 8px;
+color: white;
+background-color: #000;
+text-align: center;
+cursor: pointer;
+width: 100%;
+}
+.button:hover {
+background-color: #555;
+}
+@media screen and (max-width: 650px) {
+.column {
+width: 100%;
+display: block;
+}
+}
+ 
+</style>
+<div class="about-section">
+    <h1 style="font-family: Georgia, 'Times New Roman', Times, sans-serif;"><strong>About Us</strong></h1>
+    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">TexaRide Online Bus Ticketing is one of the best trustworthy bus ticketing system in India.</p>
+    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">We provide 24x7 Online help support to our users. Our first duty is to satisfy our users.</p>
+    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">We have anytime bus booking system with seat selection choice and to get e-ticket instantly.</p>
+    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">Users can book, buy, cancel tickets at any time anywhere using online net banking</p>
+    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">Refund is done immediately after cancellation of ticket. If error or discrepancy arises our support team fix it on that very moment.
+    </p>
+    <p> </p>
+    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">TexaRide.com has a very simple easy-to-do ticketing and booking system this is why it makes users happy.</p>
+    <p> </p>
+    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">Using TexaRide you can travel from anywhere to anywhere in west bengal and it deals with trustworthy bus agencies and our system handles an intricate, dynamically changing database.</p>
+</div>
+<h1 style=" text-align:center;font-family: 'Times New Roman', Times, sans-serif;color: #a52a2a; text-decoration: underline;"><strong>Our Team</strong></h1>
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <img src="" alt="" style="width:100%">
+            <div class="container">
+                <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;color:#a52a2a;">Ayan Chakraborty</h2>
+                <p style="font-family: Georgia, 'Times New Roman', Times, serif;color:"class="title">Founder, Backend & Frontend Developer</p>
+                <p style="font-family: Georgia, 'Times New Roman', Times, serif;">ayan999@outlook.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <img src="" alt="" style="width:100%">
+            <div class="container">
+                <h2 style="font-family:Georgia, 'Times New Roman', Times, serif;color:#a52a2a;">Suvam Kumar Singh</h2>
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif;"class="title">Frontend Developer & Database Admin</p>
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif;">Suvam007@gmail.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <img src="" alt="" style="width:100%">
+            <div class="container">
+                <h2 style="font-family:Georgia, 'Times New Roman', Times, serif;color:#a52a2a;">Sayan Pal</h2>
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif;"class="title">Chief IT & System Analyst</p>
+                <p style="font-family:Georgia, 'Times New Roman', Times, serif;">Sayan321@yahoo.com</p>
+                <p><button class="button ">Contact</button></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+{% endblock body %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% block body %}
+<link rel="stylesheet" href="/static/css/style.css" />
+{% if messages %}
+  <ul class="messages" style="padding-left: 0px;">
+    {% for message in messages %}
+      <div class="alert alert-danger" role="alert">
+        <h5 class="alert-heading">{{ message }}</h5>
+      </div>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div class='container'>
+<img src="/static/media/pic4.jpg" height=520 width=600 class="d-block w-100"  style="padding-right: 50px; padding-left: 50px; padding-top: 20px; padding-bottom: 20px;" alt="...">
+<h1 class='text-center'>User Registration</h1>
+<form method="post" action='/register/' style="padding-right: 50px; padding-left: 50px">
+{% csrf_token %}
+  <div class="form-group">
+    <label for="name">NAME</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+  </div>
+  <div class="form-group">
+    <label for="age">AGE</label>
+    <input type="age" class="form-control" id="age" name="age" placeholder="Enter your age" required>
+  </div>
+  <div class="form-group">
+    <label for="phone">CONTACT NUMBER</label>
+    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+  </div>
+  <div class="form-group">
+    <label for="desc">ADDRESS</label>
+    <textarea class="form-control" id="desc" rows=3 name="address" placeholder="Enter your house no., road, city, state and PIN. You may include a landmark." required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">EMAIL</label>
+    <input type="email" class="form-control" name="mail id" id="exampleInputEmail1" placeholder="Enter your mailing address" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="username">CREATE USERNAME</label>
+    <input type="username" class="form-control" name="username" id="username" placeholder="Create a username for your account" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">CREATE PASSWORD</label>
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Create a strong password" required>  
+    <small id="emailHelp" class="form-text text-muted">We are not showing the entered password due to security reasons.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">CONFIRM PASSWORD</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" required>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+    <label class="form-check-label" for="exampleCheck1">I have checked everything what I entered here.</label>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+    <label class="form-check-label" for="exampleCheck1">I agree to the terms and conditions.</label>
+  </div>
+  <div class="text-center" style="padding-top: 20px; padding-bottom: 50px;">
+  <button type="submit" class="btn btn-success btn-lg">Submit</button>
+  </div>
+</form>
+</div>
+{% endblock body %}

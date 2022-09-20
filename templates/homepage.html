@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search Bus
+{% endblock title %}
+
+{% block body %}
+<link rel="stylesheet" href="/static/css/style.css" />
+<script>
+    $(function() {
+        $( "#datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            showOn: "button",
+            buttonImage: "/static/media/calendar.png",
+            buttonImageOnly: true
+        });
+    });
+</script>
+
+<script>
+    function showPostTitle(post_title){
+        alert(post_title);
+    }
+</script>
+
+<style>
+.form-group {
+  display: inline-block;
+}
+.ui-datepicker-trigger {
+  margin-bottom: 6px;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #6c757d;
+    content: " ";
+}
+</style>
+<div class='container-fluid px-0'> 
+  <img src="/static/media/pic6.jpg" height=600 width=800 class="d-block w-100" alt="...">
+  <form method="post" action='/homepage/' style="position: absolute; top: 40%; left: 25%;">
+  {% csrf_token %}
+    <label for="from">FROM</label>
+    <div include="form-input-select()" class="form-group" style="width: 250px;">
+      <select class="form-control" name="from" id="inputState" required>
+        <option value="">---Select---</option>
+        <option value='Shyambazar'>Shyambazar</option>
+        <option value='Bakkhali'>Bakkhali</option>
+        <option value='Mandarmani'>Mandarmani</option>
+        <option value='Bandel'>Bandel</option>
+        <option value='Murshidabad'>Murshidabad</option>
+        <option value='Howrah'>Howrah</option>
+        <option value='Purulia'>Purulia</option>
+        <option value='Asansol'>Asansol</option>
+        <option value='Siliguri'>Siliguri</option>
+        <option value='Kharagpur'>Kharagpur</option>
+      </select>
+    </div>
+
+    <label for="to">TO</label>
+    <div include="form-input-select()" class="form-group" style="width: 250px;">
+      <select class="form-control" name="to" id="inputState" required>
+        <option value="">---Select---</option>
+        <option value='Shyambazar'>Shyambazar</option>
+        <option value='Bakkhali'>Bakkhali</option>
+        <option value='Mandarmani'>Mandarmani</option>
+        <option value='Bandel'>Bandel</option>
+        <option value='Murshidabad'>Murshidabad</option>
+        <option value='Howrah'>Howrah</option>
+        <option value='Purulia'>Purulia</option>
+        <option value='Asansol'>Asansol</option>
+        <option value='Siliguri'>Siliguri</option>
+        <option value='Kharagpur'>Kharagpur</option>
+      </select>
+    </div>
+
+    <label for="date">DATE</label>
+    <div include="form-input-select()" class="form-group" style="width: 290px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 0px;">
+      <p><input type = "date" id = "datepicker" name='date' style="width: 248px;padding-top: 4px;padding-bottom: 4px;" required></p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search Buses</button>
+  </form>
+
+{% if buses %}
+<h2>List of buses</h2>
+<table class="table table-striped">
+    <thead>
+    <td>Agency</td>
+    <td>Bus Type</td>
+    <td>Bus ID</td>
+    <td>Route</td>
+    <td>From</td>
+    <td>To</td>
+    <td>Available seats</td>
+    <td>Rate</td>
+    <td>Details</td>
+    </thead>
+
+    {% for bus in buses %}
+
+    <tr>
+        <td>{{bus.agency}}</td>
+        <td>{{bus.bustype}}</td>
+        <td>{{bus.bus_ID}}</td>
+        <td>{{bus.route}}</td>
+        <td>{{bus.From}}</td>
+        <td>{{bus.To}}</td>
+        <td>{{bus.AvS}}</td>
+        <td>{{bus.Rate}}</td>
+        <td><button type="submit" class="btn btn-primary" data-toggle="modal" data-target=#{{bus.bus_ID}}>See Details</button></td>
+        
+        <div class="modal" id={{bus.bus_ID}}>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><b>Agency:</b> {{bus.agency}}</li>
+                                <li class="list-group-item"><b>Bus Type:</b> {{bus.bustype}}</li>
+                                <li class="list-group-item"><b>Bus ID:</b> {{bus.bus_ID}}</li>
+                                <li class="list-group-item"><b>Bus Route:</b> {{bus.route}}</li>
+                                <li class="list-group-item"><b>From:</b> {{bus.From}}</li>
+                                <li class="list-group-item"><b>Boarding Point:</b> {{bus.BoardPoint}}</li>
+                                <li class="list-group-item"><b>To:</b> {{bus.To}}</li>
+                                <li class="list-group-item"><b>Dropping Point:</b> {{bus.DropPoint}}</li>
+                                <li class="list-group-item"><b>Date:</b> {{bus.Date}}</li>
+                                <li class="list-group-item"><b>Boarding Time:</b> {{bus.BTime}}</li>
+                                <li class="list-group-item"><b>Dropping Time:</b> {{bus.DTime}}</li>
+                                <li class="list-group-item"><b>Travel Time:</b> {{bus.TravelTime}}</li>
+                                <li class="list-group-item"><b>Available Seats:</b> {{bus.AvS}}</li>
+                                <li class="list-group-item"><b>Seat types:</b> {{bus.seats}}</li>
+                                <li class="list-group-item"><b>Rate:</b> {{bus.Rate}}</li>
+                            </ul>
+
+
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Book</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+    {% endfor %}
+</table>
+</div>
+{% endif %}
+
+{% endblock body %}

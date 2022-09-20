@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <!-- Pogo Slider CSS -->
+    <link rel="stylesheet" href="/static/css/pogo-slider.min.css" />
+    <!-- Site CSS -->
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/static/css/responsive.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/custom.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>TexaRide | {% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+  <style>
+  .fa{
+    font-size: 18px;
+  }
+  .bg-dark{
+    background-color: #082442!important;
+  }
+  .dropdown-item{
+    text-align: center
+  }
+  .dropdown-item:hover{
+    background-color: #7aa4d2!important;
+  }
+  #nav1 {
+    background-color: #52171d!important;
+    padding-bottom: 2px;
+    padding-top: 2px;
+  }
+  #nav2 {    
+    padding-top: 2px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+  }
+  div.d-md-block {
+    background: #303030;
+    border-radius: 60px;
+}
+.card-text {
+    font-size: larger;
+    font-family: sans-serif;
+    font-size: larger;
+    text-align: center;
+    color: blue;
+    font-weight: bold;
+}
+.col-md-4 {
+    margin-top: 40px;
+}
+}
+  </style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav1">
+<marquee><font color=#ffffff>Welcome to TexaRide Online Bus Ticketing System. Book your seat and receive e-tickets online at anytime anywhere. Toll free helpline no : +1800-185-8767. Mailing address : texaride.online247.help@outlook.com</font></marquee>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav2">
+  <a class="navbar-brand" href="#"><img src='/static/media/logo.png' width=200 height=50></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact/">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about/">About Us</a>
+      </li>
+      <form class="form-inline my-2 px-20 my-lg-0">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="border-radius: 20px; margin-left: 7px;    margin-right: 7px;    width: 400px;">
+        <button type="submit" style="border-radius: 25px;border-radius: px;width: 42px;padding-top: 6px;padding-bottom: 6px;padding-right: 12px;padding-left: 12px;color: blue; background-color: green;border-radius: 25px;"><i class="fa fa-search" style="color: #e5e5e5;"></i></button>
+      </form>
+    </ul>
+    {% if auth %}
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a href='#' id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: 0px;padding-bottom: 0px;padding-right: 0px;padding-left: 0px;">
+              <img src="/static/media/user.png" height=40 width=40>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item"><b>{{username}}</b></a>
+              <a class="dropdown-item">{{mail_id}}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/">Your Profile</a>
+              <a class="dropdown-item" href="/homepage/">Find Bus</a>
+              <a class="dropdown-item" href="/booking/">Book your seat</a>
+              <a class="dropdown-item" href="/checkout/">Payment</a>
+              <a class="dropdown-item" href="/">Your Bookings</a>
+              <a class="dropdown-item" href="/logout/">Logout</a>
+            </div>
+          </li>
+        </ul>
+    {% else %}
+      <form action='/register' method="get">
+        <button type="submit" class="btn btn-danger" style="margin-right: 10px;">Sign Up</button>
+      </form>
+      <form action='/login' method="get">
+        <button type="submit" class="btn btn-danger">Login</button>
+      </form> 
+    {% endif %}
+  </div>
+</nav>
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+      
+      <!-- Javascript -->
+      
+{% block body %}{% endblock body %}
+      <!-- section -->
+    <div class="section layout_padding padding_bottom-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="heading_main text_align_center">
+                            <h2 style="font-family: Georgia, 'Times New Roman', Times, sans-serif;"><span>Location</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+    
+    <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=government%20college%20of%20engineering%20and%20textile%20technology%20serampore+(Lloyds%20Bakery)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="http://www.gps.ie/">Google Maps GPS</a></div>
+    <!-- Start Footer -->
+      <footer class="footer-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="footer_blog">
+                        <div class="full margin-bottom_30">
+                            <h1 style="font-family: Georgia, 'Times New Roman', Times, sans-serif;color:#000;font-size:36px;">TexaRide Online Bus Ticketing</h1>
+                        </div>
+                        <div class="full white_fonts">
+                            <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">TexaRide Online Bus Ticketing is one of the best trustworthy bus ticketing system in India. We provide 24x7 Online help support to our users. Our first duty is to satisfy our users. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="footer_blog footer_menu white_fonts">
+                        <h3 style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">Quick links</h3>
+                        <ul>
+                            <li><a style="font-family: Georgia, 'Times New Roman', Times, sans-serif;" href="#">> Join Us</a></li>
+                            <li><a style="font-family: Georgia, 'Times New Roman', Times, sans-serif;" href="#">> Maintenance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="footer_blog full white_fonts">
+                        <h3 style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">Follow Us</h3>
+                        <div class="newsletter_form">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
+                            <form action="index.html">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="footer_blog full white_fonts">
+                        <h3 style="font-family: Georgia, 'Times New Roman', Times, sans-serif;">Contact us</h3>
+                        <ul class="full">
+                            <li style="font-family: Georgia, 'Times New Roman', Times, sans-serif;"><img src="/static/images/i13.png "><span>
+                            <li>12, William Carey Sarani, Maniktala,</li>
+                            <li style="font-family: Georgia, 'Times New Roman', Times, sans-serif;"> Serampore, West Bengal 712201 </li></span></li>
+                            <li style="font-family: Georgia, 'Times New Roman', Times, sans-serif;"><img src="/static/images/i14.png "><span>texaride.online247.help@outlook.com</span></li>
+                            <li style="font-family: Georgia, 'Times New Roman', Times, sans-serif;"><img src="/static/images/i12.png "><span>+1800-185-8767</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p style="font-family: Georgia, 'Times New Roman', Times, sans-serif;" class="crp">© Copyrights 2020 design by html.design</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" id="scroll-to-top" class="hvr-radial-out"><i class="fa fa-angle-up"></i></a>
+    <!-- ALL JS FILES -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    
+    <!-- ALL PLUGINS -->
+    <script src=" /static/js/jquery.magnific-popup.min.js "></script>
+    <script src="/static/js/jquery.pogo-slider.min.js "></script>
+    <script src="/static/js/slider-index.js "></script>
+    <script src="/static/js/smoothscroll.js "></script>
+    <script src="/static/js/form-validator.min.js "></script>
+    <script src="/static/js/contact-form-script.js "></script>
+    <script src="/static/js/isotope.min.js "></script>
+    <script src="/static/js/images-loded.min.js "></script>
+     
+    <script src="/static/js/custom.js "></script>
+    <script>
+    console.log('working');
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        updateCart(cart);
+    }
+
+    // If the add to cart button is clicked, add/increment the item
+    //$('.cart').click(function() {
+    $('.divpr').on('click', 'button.cart', function() {
+        var idstr = this.id.toString();
+        if (cart[idstr] != undefined) {
+            qty = cart[idstr][0] + 1;
+        } else {
+            qty = 1;
+            name = document.getElementById('name' + idstr).innerHTML;
+            price = document.getElementById('price' + idstr).innerHTML;
+            cart[idstr] = [qty, name, price];
+        }
+        updateCart(cart);
+    });
+    //Add Popover to 
+    $('#popcart').popover();
+    updatePopover(cart);
+
+    function updatePopover(cart) {
+        console.log('We are inside updatePopover');
+        var popStr = "";
+        popStr = popStr + "<h6> Your Shopping Cart </h6><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            popStr = popStr + "<b>" + i + "</b>. ";
+            popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item][0] + '<br>';
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-outline-dark' id ='checkout'>Checkout</button></a> <button class='btn btn-outline-dark' onclick='clearCart()' id ='clearCart'>Clear Cart</button> "
+        console.log(popStr);
+        document.getElementById('popcart').setAttribute('data-content', popStr);
+        $('#popcart').popover('show');
+    }
+
+
+    function clearCart() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (var item in cart) {
+            document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-dark cart">Add To Cart</button>'
+        }
+        localStorage.clear();
+        cart = {};
+        updateCart(cart);
+    }
+
+
+
+    function updateCart(cart) {
+        var sum = 0;
+        for (var item in cart) {
+            sum = sum + cart[item][0];
+            document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-dark minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-dark plus'> + </button>";
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = sum;
+        console.log(cart);
+        updatePopover(cart);
+    }
+
+
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a][0] = cart['pr' + a][0] - 1;
+        cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        cart['pr' + a][0] = cart['pr' + a][0] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
+    </script>
+    <script>
+    /* counter js */
+
+    (function($) {
+        $.fn.countTo = function(options) {
+            options = options || {};
+
+            return $(this).each(function() {
+                // set options for current element
+                var settings = $.extend({}, $.fn.countTo.defaults, {
+                    from: $(this).data('from'),
+                    to: $(this).data('to'),
+                    speed: $(this).data('speed'),
+                    refreshInterval: $(this).data('refresh-interval'),
+                    decimals: $(this).data('decimals')
+                }, options);
+
+                // how many times to update the value, and how much to increment the value on each update
+                var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                    increment = (settings.to - settings.from) / loops;
+
+                // references & variables that will change with each update
+                var self = this,
+                    $self = $(this),
+                    loopCount = 0,
+                    value = settings.from,
+                    data = $self.data('countTo') || {};
+
+                $self.data('countTo', data);
+
+                // if an existing interval can be found, clear it first
+                if (data.interval) {
+                    clearInterval(data.interval);
+                }
+                data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+                // initialize the element with the starting value
+                render(value);
+
+                function updateTimer() {
+                    value += increment;
+                    loopCount++;
+
+                    render(value);
+
+                    if (typeof(settings.onUpdate) == 'function') {
+                        settings.onUpdate.call(self, value);
+                    }
+
+                    if (loopCount >= loops) {
+                        // remove the interval
+                        $self.removeData('countTo');
+                        clearInterval(data.interval);
+                        value = settings.to;
+
+                        if (typeof(settings.onComplete) == 'function') {
+                            settings.onComplete.call(self, value);
+                        }
+                    }
+                }
+
+                function render(value) {
+                    var formattedValue = settings.formatter.call(self, value, settings);
+                    $self.html(formattedValue);
+                }
+            });
+        };
+
+        $.fn.countTo.defaults = {
+            from: 0, // the number the element should start at
+            to: 0, // the number the element should end at
+            speed: 1000, // how long it should take to count between the target numbers
+            refreshInterval: 100, // how often the element should be updated
+            decimals: 0, // the number of decimal places to show
+            formatter: formatter, // handler for formatting the value before rendering
+            onUpdate: null, // callback method for every time the element is updated
+            onComplete: null // callback method for when the element finishes updating
+        };
+
+        function formatter(value, settings) {
+            return value.toFixed(settings.decimals);
+        }
+    }(jQuery));
+
+    jQuery(function($) {
+        // custom formatting example
+        $('.count-number').data('countToOptions', {
+            formatter: function(value, options) {
+                return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+            }
+        });
+
+        // start all the timers
+        $('.timer').each(count);
+
+        function count(options) {
+            var $this = $(this);
+            options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+            $this.countTo(options);
+        }
+    });
+    </script>
+  </body>
+</html>
+

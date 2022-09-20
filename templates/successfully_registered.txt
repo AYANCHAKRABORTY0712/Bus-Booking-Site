@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% block body %}
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Successfully Registered!</h4>
+  <p>You have created your account in TexaRide.com successfully. Search buses for the destination now and reserve your seat.</p>
+  <hr>
+  <p class="mb-0">Don't share your login credentials with anyone else. These are highly confidential.</p>
+</div>
+<div class="container">
+<div class="container">
+<div class="container">
+<div class="container">
+<img src="/static/media/pic5.jpg" height=600 width=250 class="d-block w-100"  alt="...">
+</div>
+</div>
+</div>
+</div>
+{% endblock body %}
